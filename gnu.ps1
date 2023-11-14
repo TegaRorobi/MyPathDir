@@ -5,6 +5,10 @@ param (
     [switch]$clean
 )
 
+if ($clean -and -not $run) {
+    Write-Host "Error: The '-clean' switch can only be used along with '-run'."
+    exit 0
+}
 
 if (-not $file -and $args.Count -gt 0) {
     $file = $args[0]
@@ -13,7 +17,7 @@ if (-not $file -and $args.Count -gt 0) {
 
 if (-not $file) {
     $cmdname = $MyInvocation.InvocationName
-    $msg = "`nNAME`n    $cmdname`n`nUSAGE`n    $cmdname [-filename] <filename> [-run]"
+    $msg = "`nNAME`n    $cmdname`n`nUSAGE`n    $cmdname [-filename] <filename> [-run] [-clean]"
     $msg += "`n`nEXAMPLES`n    $cmdname -filename hello.c`n    $cmdname main.cpp`n`n"
     Write-Host $msg
     Write-Host "Supply values for the following parameters:"
