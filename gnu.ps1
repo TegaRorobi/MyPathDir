@@ -42,9 +42,9 @@ switch ($fileExtension.ToLower()) {
     }
 }
 
-if (-not $run) {
-    # Write-Host "Compilation successful. Output file: $fileName.exe"
-    exit 0
+if ($run) {
+    & ./$fileName.exe
 }
 
-& ./$fileName.exe
+# Write-Host "Compilation successful. Output file: $fileName.exe"
+exit 0
