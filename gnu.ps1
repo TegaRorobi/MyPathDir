@@ -1,6 +1,7 @@
 
 param (
-    [string]$file
+    [string]$file,
+    [switch]$run
 )
 
 
@@ -37,4 +38,9 @@ switch ($fileExtension.ToLower()) {
     }
 }
 
-Write-Host "Compilation successful. Output file: $fileName.exe"
+if (-not $run) {
+    Write-Host "Compilation successful. Output file: $fileName.exe"
+    exit 0
+}
+
+& ./$fileName.exe
