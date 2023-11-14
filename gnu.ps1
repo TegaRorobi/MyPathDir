@@ -12,7 +12,7 @@ if (-not $file -and $args.Count -gt 0) {
 
 if (-not $file) {
     $cmdname = $MyInvocation.InvocationName
-    $msg = "`nNAME`n    $cmdname`n`nUSAGE`n    $cmdname [-filename] <filename>"
+    $msg = "`nNAME`n    $cmdname`n`nUSAGE`n    $cmdname [-filename] <filename> [-run]"
     $msg += "`n`nEXAMPLES`n    $cmdname -filename hello.c`n    $cmdname main.cpp`n`n"
     Write-Host $msg
     Write-Host "Supply values for the following parameters:"
