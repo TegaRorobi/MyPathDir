@@ -1,7 +1,8 @@
 
 param (
     [string]$file,
-    [switch]$run
+    [switch]$run,
+    [switch]$clean
 )
 
 
@@ -46,5 +47,8 @@ if ($run) {
     & ./$fileName.exe
 }
 
+if ($clean) {
+    & Remove-Item ./$fileName.exe
+}
 # Write-Host "Compilation successful. Output file: $fileName.exe"
 exit 0
