@@ -36,10 +36,14 @@ switch ($fileExtension.ToLower()) {
     ".cpp" {
         & g++ $file -o "$fileName.exe"
     }
+    default {
+        Write-Host "Invalid file extension: '$fileExtension'. Expected '.c' or '.cpp'."
+        exit 1
+    }
 }
 
 if (-not $run) {
-    Write-Host "Compilation successful. Output file: $fileName.exe"
+    # Write-Host "Compilation successful. Output file: $fileName.exe"
     exit 0
 }
 
